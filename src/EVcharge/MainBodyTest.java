@@ -115,34 +115,37 @@ public class MainBodyTest {
 		assertEquals(6, result_chargepoints_1);
 		
 		//create all the data (from test 2 excel file) that test the function of the whole system between different modules
-				//create 10 EV users to test
-				MainBody.evUsers = new EV[10];
-				MainBody.evUsers[0] = new EV(1,2,10,0,13,30,60);
-				MainBody.evUsers[1] = new EV(2,2,9,0,12,0,50);
-				MainBody.evUsers[2] = new EV(3,3,10,0,13,0,40);
-				MainBody.evUsers[3] = new EV(4,3,9,0,11,0,60);
-				MainBody.evUsers[4] = new EV(5,2,14,0,14,30,40);
-				MainBody.evUsers[5] = new EV(6,2,11,0,12,30,30);
-				MainBody.evUsers[6] = new EV(7,3,10,0,10,30,50);
-				MainBody.evUsers[7] = new EV(8,1,9,30,11,30,25);
-				MainBody.evUsers[8] = new EV(9,2,11,30,13,30,45);
-				MainBody.evUsers[9] = new EV(10,1,10,0,11,30,80);
-				//create 3 Charging points to test
-				MainBody.chPoint = new ChPoint[10];
-				MainBody.chPoint[0] = new ChPoint(1,1);
-				MainBody.chPoint[1] = new ChPoint(2,4);
-				MainBody.chPoint[2] = new ChPoint(3,2);
-				//call the schedule algorithm
-				MainBody.allocate();
-				//calculate the number of charging points that can be used
-				int result_chargepoints_2 = 0;
-				for (int i=0;i<MainBody.evUsers.length;i++){
-					if (MainBody.evUsers[i]!=null && MainBody.evUsers[i].getChargingPoint()>0){
-						result_chargepoints_2++;
-					}
-				}
-				//the expected result is 5 when the input is test 2 excel data
-				assertEquals(5, result_chargepoints_2);
+		//create 10 EV users to test
+		MainBody.evUsers = new EV[10];
+		MainBody.evUsers[0] = new EV(1,2,10,0,13,30,60);
+		MainBody.evUsers[1] = new EV(2,2,9,0,12,0,50);
+		MainBody.evUsers[2] = new EV(3,3,10,0,13,0,40);
+		MainBody.evUsers[3] = new EV(4,3,9,0,11,0,60);
+		MainBody.evUsers[4] = new EV(5,2,14,0,14,30,40);
+		MainBody.evUsers[5] = new EV(6,2,11,0,12,30,30);
+		MainBody.evUsers[6] = new EV(7,3,10,0,10,30,50);
+		MainBody.evUsers[7] = new EV(8,1,9,30,11,30,25);
+		MainBody.evUsers[8] = new EV(9,2,11,30,13,30,45);
+		MainBody.evUsers[9] = new EV(10,1,10,0,11,30,80);
+		//create 3 Charging points to test
+		MainBody.chPoint = new ChPoint[10];
+		MainBody.chPoint[0] = new ChPoint(1,1);
+		MainBody.chPoint[1] = new ChPoint(2,4);
+		MainBody.chPoint[2] = new ChPoint(3,2);
+		//call the schedule algorithm
+		MainBody.allocate();
+		//calculate the number of charging points that can be used
+		int result_chargepoints_2 = 0;
+		for (int i=0;i<MainBody.evUsers.length;i++){
+			if (MainBody.evUsers[i]!=null && MainBody.evUsers[i].getChargingPoint()>0){
+				result_chargepoints_2++;
+			}
+		}
+		//the expected result is 5 when the input is test 2 excel data
+		assertEquals(5, result_chargepoints_2);
+				
+		//border testing
+		
 	}
 
 }
